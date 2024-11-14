@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat
 
 plugins {
     id "com.android.application"
-    id "kotlin-android.android"
+    id "org.jetbrains.kotlin.android"
     id "org.jetbrains.kotlin.plugin.compose"
 }
 
