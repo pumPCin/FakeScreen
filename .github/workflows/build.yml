@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          path: app/build/outputs/apk/github/release/*.apk
+          path: app/build/outputs/apk/release/*.apk
