@@ -1,27 +1,25 @@
 import java.text.SimpleDateFormat
 
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id "com.android.application"
+    id "kotlin-android.android"
+    id "org.jetbrains.kotlin.plugin.compose"
 }
 
 android {
-    namespace 'me.neversleep.plusplus'
-    compileSdk 34
-
     defaultConfig {
         applicationId "me.neversleep.plusplus"
-        minSdk 21
-        targetSdk 34
+        targetSdkVersion 35
+        compileSdk 35
+        minSdkVersion 26
         versionCode 17
-        versionName "1.7.2"
+        versionName "1.7.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
         }
     }
-
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             if (variant.buildType.name == 'release') {
@@ -31,25 +29,23 @@ android {
             }
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
+    namespace "me.neversleep.plusplus"
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
     buildFeatures {
+        compose = true
         buildConfig = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.3'
     }
     packaging {
         resources {
@@ -57,9 +53,7 @@ android {
         }
     }
 }
-
 dependencies {
-
     testImplementation 'junit:junit:4.13.2'
     compileOnly "de.robv.android.xposed:api:82"
     implementation 'androidx.appcompat:appcompat:1.6.1'
