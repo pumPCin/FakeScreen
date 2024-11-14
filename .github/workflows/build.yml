@@ -1,4 +1,4 @@
-name: Android CI
+name: Build
 
 on:
   workflow_dispatch:
@@ -27,15 +27,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Retrieve version name
-        run: echo VERSION_NAME=$(date "+%Y%m%d")_$(echo ${{ github.event.head_commit.id }} | head -c 7) >> $GITHUB_ENV
-
-      - name: Retrieve version code
-        run: echo VERSION_CODE=$(cat ${{ github.workspace }}/app/build.gradle | grep "versionCode" | grep -Eo "[0-9]+") >> $GITHUB_ENV
-
-      - name: Set version name
-        run: sed -i "s/versionName \".*\"/versionName \"${{ env.VERSION_NAME }}\"/" ${{ github.workspace }}/app/build.gradle
-
       - name: Build with Gradle
         run: ./gradlew assembleRelease
 
@@ -46,11 +37,8 @@ jobs:
           echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
           echo Last build tool version is: $BUILD_TOOL_VERSION
 
-      - name: Rename
-        run: mv ${{ github.workspace }}/app/build/outputs/apk/release/app-release-unsigned.apk ${{ github.workspace }}/app/build/outputs/apk/release/FakeScreen-${{ env.VERSION_NAME }}.apk
-
       - name: Upload Release APK
         uses: actions/upload-artifact@v4
+        if: success()
         with:
-          name: release
-          path: ${{ github.workspace }}/app/build/outputs/apk/release/FakeScreen-${{ env.VERSION_NAME }}.apk
+          path: app/build/outputs/apk/github/release/*.apk
