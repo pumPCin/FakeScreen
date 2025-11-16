@@ -20,9 +20,9 @@ public class XMain implements IXposedHookLoadPackage {
           XUtils.xLog(TAG, "package:" + loadPackageParam.packageName);
           XUtils.xLog(TAG, "process:" + loadPackageParam.processName);
           if ("android".equals(loadPackageParam.packageName)) {
-               XUtils.xLog(TAG, "start hook system_server...");
+               XUtils.xLog(TAG, "start h00k system_server...");
                hookAndroid(loadPackageParam);
-               XUtils.xLog(TAG, "end hook system_server...");
+               XUtils.xLog(TAG, "end h00k system_server...");
           }
           if (BuildConfig.APPLICATION_ID.equals(loadPackageParam.packageName)) {
                hookSelf(loadPackageParam);
@@ -106,11 +106,11 @@ public class XMain implements IXposedHookLoadPackage {
                          XUtils.xLog(TAG, "get_disable_sleep: disable_sleep is " + xSharedPreferences.getBoolean("disable_sleep", false));
 
                          if (!xSharedPreferences.getBoolean("disable_sleep", false)) {
-                              XUtils.xLog(TAG, "afterHookedMethod: disable_sleep is false");
+                              XUtils.xLog(TAG, "afterH00kedMethod: disable_sleep is false");
                               return;
                          }
                          param.setResult(true);
-                         XUtils.xLog(TAG, "afterHookedMethod: disable_sleep is true");
+                         XUtils.xLog(TAG, "afterH00kedMethod: disable_sleep is true");
 
                     }
                });
@@ -128,11 +128,11 @@ public class XMain implements IXposedHookLoadPackage {
                               XUtils.xLog(TAG, "[goToSleep]get_disable_sleep: disable_sleep is " + xSharedPreferences.getBoolean("disable_sleep", false));
 
                               if (!xSharedPreferences.getBoolean("disable_sleep", false)) {
-                                   XUtils.xLog(TAG, "[goToSleep]afterHookedMethod: disable_sleep is false");
+                                   XUtils.xLog(TAG, "[goToSleep]afterH00kedMethod: disable_sleep is false");
                                    return;
                               }
                               param.setResult(null);
-                              XUtils.xLog(TAG, "[goToSleep]afterHookedMethod: disable_sleep is true");
+                              XUtils.xLog(TAG, "[goToSleep]afterH00kedMethod: disable_sleep is true");
                          }
                     });
                } catch (Throwable error) {
@@ -150,11 +150,11 @@ public class XMain implements IXposedHookLoadPackage {
                               XUtils.xLog(TAG, "[getScreenOffTimeoutLocked]get_disable_sleep: disable_sleep is " + xSharedPreferences.getBoolean("disable_sleep", false));
 
                               if (!xSharedPreferences.getBoolean("disable_sleep", false)) {
-                                   XUtils.xLog(TAG, "[getScreenOffTimeoutLocked]afterHookedMethod: disable_sleep is false");
+                                   XUtils.xLog(TAG, "[getScreenOffTimeoutLocked]afterH00kedMethod: disable_sleep is false");
                                    return;
                               }
                               param.setResult(Long.MAX_VALUE);
-                              XUtils.xLog(TAG, "[getScreenOffTimeoutLocked]afterHookedMethod: disable_sleep is true");
+                              XUtils.xLog(TAG, "[getScreenOffTimeoutLocked]afterH00kedMethod: disable_sleep is true");
                          }
                     });
                } catch (Throwable error) {
@@ -178,7 +178,7 @@ public class XMain implements IXposedHookLoadPackage {
                                  XUtils.xLog(TAG, "[updateUserActivitySummaryLocked]get_disable_sleep: disable_sleep is " + xSharedPreferences.getBoolean("disable_sleep", false));
 
                                  if (!xSharedPreferences.getBoolean("disable_sleep", false)) {
-                                      XUtils.xLog(TAG, "[updateUserActivitySummaryLocked]afterHookedMethod: disable_sleep is false");
+                                      XUtils.xLog(TAG, "[updateUserActivitySummaryLocked]afterH00kedMethod: disable_sleep is false");
                                       return;
                                  }
                                  // 修改结果，确保屏幕不会进入 SCREEN_OFF 状态
@@ -203,7 +203,7 @@ public class XMain implements IXposedHookLoadPackage {
                XUtils.xLog(TAG, "updateUserActivitySummaryLocked error:", error);
           }
 
-          XUtils.xLog(TAG, "hookAndroid finish");
+          XUtils.xLog(TAG, "h00kAndroid finish");
 
      }
 }
