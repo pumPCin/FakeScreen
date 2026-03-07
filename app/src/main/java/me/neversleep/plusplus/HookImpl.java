@@ -24,14 +24,14 @@ public class HookImpl {
                     protected void beforeHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) throws Throwable {
                          super.beforeHookedMethod(methodHookParam);
                          try {
-                              XUtils.xLog("neversleep", "beforeHookedMethod: start");
+                              XUtils.xLog("neversleep", "beforeH00kedMethod: start");
                               xSharedPreferences.reload();
                               int i = 0;
                               if (!xSharedPreferences.getBoolean("power", false)) {
-                                   Log.e("neversleep", "beforeHookedMethod: power is false");
+                                   Log.e("neversleep", "beforeH00kedMethod: power is false");
                                    return;
                               }
-                              XUtils.xLog("neversleep", "beforeHookedMethod: power is true");
+                              XUtils.xLog("neversleep", "beforeH00kedMethod: power is true");
                               Class<?> cls = Class.forName("android.view.SurfaceControl", false, classLoader);
                               IBinder iBinder = getDisplayBinder(classLoader);
                               if (iBinder != null) {
@@ -44,11 +44,11 @@ public class HookImpl {
                               methodHookParam.setResult(null);
                               XUtils.xLog("neversleep", "replace success");
                          } catch (Throwable th) {
-                              XUtils.xLog("neversleep", "beforeHookedMethod: error:", th);
+                              XUtils.xLog("neversleep", "beforeH00kedMethod: error:", th);
                          }
                     }
                });
-               XUtils.xLog("neversleep", "main: Hook success");
+               XUtils.xLog("neversleep", "main: H00k success");
           } catch (Throwable th) {
                th.printStackTrace();
                XUtils.xLog("neversleep", "main: error:" + th.getMessage(), th);
